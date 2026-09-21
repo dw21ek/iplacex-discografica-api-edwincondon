@@ -5,7 +5,7 @@ WORKDIR /home/gradle/src
 RUN gradle build --no-daemon -x test
 
 # Stage 2: Ejecución
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre-jammy
 EXPOSE 8080
 # Como en build.gradle tiene "id 'war'" y "version = '1'", el archivo generado será discografia-1.war
 COPY --from=build /home/gradle/src/build/libs/discografia-1.war app.war
